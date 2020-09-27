@@ -1,9 +1,22 @@
 <template>
   <div>
-    <nuxt />
+    <AppHeader></AppHeader>
+    <transition>
+      <AppMain></AppMain>
+    </transition>
+    <AppFooter></AppFooter>
   </div>
 </template>
-
+<script>
+import AppHeader from '~/components/AppHeader'
+import AppMain from '~/components/AppMain'
+import AppFooter from '~/components/AppFooter'
+export default {
+  components: {
+      AppHeader,AppMain,AppFooter
+  }
+}
+</script>
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
