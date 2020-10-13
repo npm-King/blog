@@ -1,4 +1,5 @@
 
+const path = require('path');
 module.exports = {
   mode: 'universal',
   /*
@@ -44,7 +45,8 @@ module.exports = {
   */
   plugins: [
     '@/plugins/element-ui',
-    { src: '~plugins/mock',ssr: true }
+    { src: '~plugins/mock', ssr: true },
+    { src: '~plugins/svg-icon', ssr: true }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -55,7 +57,8 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
   axios: {
     prefix: '/api',
@@ -63,10 +66,10 @@ module.exports = {
     credentials: true
   },
   proxy: {
-    '/api/': {
-      target: 'http://127.0.0.1/',
+    '/api': {
+      target: 'http://127.0.0.1:3000',
       pathRewrite: {
-        '^/api/': ''
+        '^/api': '',
       },
       changeOrigin: true
     }
@@ -81,6 +84,22 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
+      const svgRule = config.module.rules.find(rule => rule.test.test('.svg'))
+      svgRule.exclude = [path.resolve(__dirname, 'assets/icons/svg')]
+      // Includes /icons/svg for svg-sprite-loader
+      config.module.rules.push({
+        test: /\.svg$/,
+        include: [path.resolve(__dirname, 'assets/icons/svg')],
+        use:[
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              symbolId: 'icon-[name]',
+            }
+          }
+        ]
+      })
     }
+
   }
 }
