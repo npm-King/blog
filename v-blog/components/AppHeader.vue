@@ -1,11 +1,9 @@
 <template>
   <div class="header">
     <div class="logo">
-      <!-- <img src="./../static/logo_cc_zero.png" alt="CC-zero"> -->
       <a href="/" title="cc-zero">cc-zero</a>
     </div>
     <nav class="nav">
-      <!-- <nuxt-link to="/" tag="span">首页</nuxt-link> -->
       <nuxt-link
         v-for="(item, index) in routes_arr"
         :class="{ active: item.active }"
@@ -15,11 +13,6 @@
         tag="span"
         >{{ item.mata }}</nuxt-link
       >
-      <!-- <nuxt-link to="/tcode" tag="span">代码</nuxt-link>
-      <nuxt-link to="/notes" tag="span">杂记</nuxt-link>
-      <nuxt-link to="/classify" tag="span">分类</nuxt-link>
-      <nuxt-link to="/timeline" tag="span">时间轴</nuxt-link>
-      <nuxt-link to="/about" tag="span">关于我</nuxt-link> -->
     </nav>
   </div>
 </template>
