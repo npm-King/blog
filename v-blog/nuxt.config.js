@@ -45,7 +45,7 @@ module.exports = {
   */
   plugins: [
     '@/plugins/element-ui',
-    { src: '~plugins/mock', ssr: true },
+    // { src: '~plugins/mock', ssr: true },
     { src: '~plugins/svg-icon', ssr: true }
   ],
   /*

@@ -12,7 +12,7 @@
                         <span>{{item.date}}</span>
                     </div>
                     <div>
-                        <!-- <svg-icon icon-class="classify" /> -->
+                        <svg-icon icon-class="classify" />
                         <span>{{item.classify}}</span>
                     </div>
                 </div>

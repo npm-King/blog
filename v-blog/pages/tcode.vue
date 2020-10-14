@@ -16,10 +16,10 @@ export default {
         activeList
     },
     mounted(){
-        this.$axios.get("/activelist").then(res=>{
-            console.log("res",res)
-            this.list = res.data;
-        })
+        // this.$axios.get("/activelist").then(res=>{
+        //     console.log("res",res)
+        //     this.list = res.data;
+        // })
     }
 }
 </script>
